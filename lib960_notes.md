@@ -26,4 +26,5 @@ for(i < c; i < c; i++)  {
     } else {
         console.log(i);
     }
-}`
+}
+```
