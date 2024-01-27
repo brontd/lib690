@@ -10,6 +10,8 @@ I have some basic familiarity with Git. We use it for library projects here at U
 
 
 ```
+// JavaScript "fizzbuzz" example...
+
 let c = 100;
 let i = 1;
 
