@@ -9,7 +9,8 @@
 I have some basic familiarity with Git. We use it for library projects here at UK, but I have much to learn. To be honest I feel the same way about Git as I do the remote control to my stereo receiver... so many buttons, but I only use the on/off and volume control... ;-)
 
 
-`let c = 100;
+```
+let c = 100;
 let i = 1;
 
 for(i < c; i < c; i++)  {
@@ -25,4 +26,4 @@ for(i < c; i < c; i++)  {
     } else {
         console.log(i);
     }
-}`
+}```
