@@ -8,6 +8,73 @@
 
 I have some basic familiarity with Git. We use it for library projects here at UK, but I have much to learn. To be honest I feel the same way about Git as I do the remote control to my stereo receiver... so many buttons, but I only use the on/off and volume control... ;-)
 
+## Markdown Experiment with JavaScript
+
+```
+// JS code to transform array of arrays into markdown table... run in Chrome Dev Tools, ideally via Sources/Snippets
+
+// Clear console...
+clear();
+
+// Array of arrays, with the assumption that the first array corresponds to header fields
+let x = [
+        ['id', 'make', 'model'],
+        ['1', 'Fender', 'Stratocaster'],
+        ['2', 'Fender', 'Telecaster'],
+        ['2', 'Gibson', 'Les Paul']
+    ];
+
+var output = '';
+
+// Iterate array, then sub arrays to create markdown
+for(i = 0, xl = x.length; i < xl; i++) {
+
+    output += '| '
+
+    if (i == 0) {
+
+        // Write table header
+        for (const v of x[i]) {
+            output += v + ' | ';
+        }
+
+        output += '\r\n';
+        
+        // Write table header horizontal divider
+        for (const v of x[i]) {
+            output += '| ----- ';
+        }
+
+        output += '\r\n';
+
+    } else {
+
+        // Write table values
+        for (const v of x[i]) {
+            output += v + ' | ';
+        }
+
+        output += '\r\n';
+        
+    }
+}
+
+console.log(output);
+
+```
+
+### Output
+
+| id | make | model | 
+| ----- | ----- | ----- 
+| 1 | Fender | Stratocaster | 
+| 2 | Fender | Telecaster | 
+| 2 | Gibson | Les Paul | 
+
+
+---
+
+
 
 ```
 // JavaScript "fizzbuzz" example...
