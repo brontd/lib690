@@ -22,6 +22,7 @@ That said, I will finish with a quip from the AskUbuntu Forum:
 
 "I've been using vim for about 2 years now, mostly because I can't figure out how to exit it."
 
-`Esc + :wq`
+Simple... `Esc + :wq`
 
-Simple...
+:-)
+
