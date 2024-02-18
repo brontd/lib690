@@ -1,9 +1,11 @@
-*Learning Grep
+# Learning Grep
 
-`````
-Scopus
+## Sample File Snippet
+
+> Scopus
 EXPORT DATE: 17 February 2024
 
+```
 @ARTICLE{Adams2023100,
         author = {Adams, Harrison},
         title = {Vija Celmins: The Art of Enervation},
@@ -45,6 +47,49 @@ EXPORT DATE: 17 February 2024
         source = {Scopus},
         note = {Cited by: 0; All Open Access, Bronze Open
 }
-`````
+```
 
+```
+Pull author using grep piped to cut
 grep -o 'author = {.*[a-z]' scopus.bib | cut -d"{" -f2
+
+Adams, Harrison
+Petriceks, Aldis
+García, Patricia
+Cara, Ana
+Pfennig, Isabel Serra
+Joy, Dhanya and James, Siby
+Surendralal, Sumithra
+Otis, Laura
+Phungula, Njabulo
+Galván-Díaz, Félix Joaquín
+Martinson
+Kristal, Efraín
+Law, Andrew
+```
+
+```
+Pull date by piping grep to secondary grep
+grep -i 'year' scopus.bib | grep -Po '\d{4}'
+```
+
+Experimenting with Lookarounds to pull data from between braces, e.g, * title = {Vija Celmins: The Art of Enervation},
+In more other (perhaps more sophisticated) regex implementations, searchs can employ parentheses can be used to capture matches that can be designated as replacement strings.
+Thus, " title = {the title}" might be matched by (pseudo-code) /^\t title = {(.?)}/ wherein the match, in this case, defined by (.?) would be held in $1 variable (subsequent matches in $2, $3, etc.). Since grep doesn't appear to support this (as far as I can determine), the lookaround functionality offers a viable, grep-only, answer.
+
+```
+grep -oiP "(?<=\ttitle = {).*((?=}))" scopus.bib
+
+Vija Celmins: The Art of Enervation
+Irrevocably other: Narrative medicine and Jorge Luis Borges' "The other death"
+AESTHETIC MODES OF THE INFINITE: HORROR, SUBLIMITY, AND RELATIONALITY
+On the High Art of Folk Poetry: What Jorge Luis Borges and Bob Dylan Have in Common
+HILDE SPIEL AND GISÈLE FREUND AND THE EXPERIENCE OF EXILE. TESTIMONIES AND DOCUMENTS OF AN AGE; [HILDE SPIEL I GISÈLE FREUND I L'EXPERIÈNCIA DE L'EXILI. TESTIMONIS I DOCUMENTS D'UNA ÈPOCA]; [HILDE SPIEL Y GISÈLE FREUND Y LA EXPERIENCIA DEL EXILIO. TESTIMONIOS Y DOCUMENTOS DE UNA ÉPOCA]
+Mirrored Zoontologies: Animalia in the Works of Jorge Luis Borges
+Fiction and Philosophy of Science: Paired Readings for the Science Classroom
+Creative Writing: Embracing Unfamiliar Knowledge
+Sonic labyrinths: form and creative process in like knotted strings (2022) for string quartet
+Fiction in Pain: Mourning and Melancholia in Borges's Emma Zunz and El Aleph; [Ficción en el dolor: duelo y melancolía en Emma Zunz y El Aleph de Borges]
+Reflexivity’s Ontological Turn: From Cybernetics to Autopoiesis in “The Circular Ruins” and The People of Paper
+Jorge Luis Borges’s Theory and Practice of Translation
+Incompatibilism and the garden of forking paths
