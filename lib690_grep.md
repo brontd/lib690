@@ -78,8 +78,8 @@ grep -i 'year' scopus.bib | grep -Po '\d{4}'
 2023...
 ```
 
-Experimenting with Lookarounds to pull data from between braces, e.g, * title = {Vija Celmins: The Art of Enervation},
-In more other (perhaps more sophisticated) regex implementations, searchs can employ parentheses can be used to capture matches that can be designated as replacement strings.
+Experimenting with Lookarounds to pull data from between braces, e.g, * title = {Vija Celmins: The Art of Enervation} ==> Vija Celmins: The Art of Enervation 
+In other (perhaps more sophisticated) regex implementations, searches can employ parentheses to capture matches that can then be designated as replacement strings.
 Thus, " title = {the title}" might be matched by (pseudo-code) /^\t title = {(.?)}/ wherein the match, in this case, defined by (.?) would be held in $1 variable (subsequent matches in $2, $3, etc.). Since grep doesn't appear to support this (as far as I can determine), the lookaround functionality offers a viable, grep-only, answer.
 
 ```
