@@ -70,7 +70,12 @@ Law, Andrew
 
 ```
 Pull date by piping grep to secondary grep
+
 grep -i 'year' scopus.bib | grep -Po '\d{4}'
+
+2023
+2023
+2023...
 ```
 
 Experimenting with Lookarounds to pull data from between braces, e.g, * title = {Vija Celmins: The Art of Enervation},
