@@ -2,7 +2,7 @@
 
 ## Sample File Snippet
 
-> Scopus
+Scopus
 EXPORT DATE: 17 February 2024
 
 ```
@@ -49,10 +49,15 @@ EXPORT DATE: 17 February 2024
 }
 ```
 
-```
 Pull author using grep piped to cut
-grep -o 'author = {.*[a-z]' scopus.bib | cut -d"{" -f2
 
+```
+grep -o 'author = {.*[a-z]' scopus.bib | cut -d"{" -f2
+```
+
+Results in:
+
+```
 Adams, Harrison
 Petriceks, Aldis
 García, Patricia
@@ -68,23 +73,42 @@ Kristal, Efraín
 Law, Andrew
 ```
 
-```
 Pull date by piping grep to secondary grep
 
+```
 grep -i 'year' scopus.bib | grep -Po '\d{4}'
-
-2023
-2023
-2023...
 ```
 
-Experimenting with Lookarounds to pull data from between braces, e.g, * title = {Vija Celmins: The Art of Enervation} ==> Vija Celmins: The Art of Enervation 
+Results in:
+
+```
+2023
+2023
+2023
+```
+
+Experimenting with Lookarounds to pull data from between braces, e.g.:
+
+```
+title = {Vija Celmins: The Art of Enervation} ==> Vija Celmins: The Art of Enervation
+```
+ 
 In other (perhaps more sophisticated) regex implementations, searches can employ parentheses to capture matches that can then be designated as replacement strings.
-Thus, " title = {the title}" might be matched by (pseudo-code) /^\t title = {(.?)}/ wherein the match, in this case, defined by (.?) would be held in $1 variable (subsequent matches in $2, $3, etc.). Since grep doesn't appear to support this (as far as I can determine), the lookaround functionality offers a viable, grep-only, answer.
+Thus,
+
+```
+title = {the title}" might be matched by (pseudo-code) /^\t title = {(.?)}/
+```
+
+wherein the match, in this case, defined by `(.?)` would be held in `$1` variable (subsequent matches in `$2`, `$3`, etc.). Since grep doesn't appear to support this (as far as I can determine), the lookaround functionality offers a viable, grep-only, answer.
 
 ```
 grep -oiP "(?<=\ttitle = {).*((?=}))" scopus.bib
+```
 
+Results in:
+
+```
 Vija Celmins: The Art of Enervation
 Irrevocably other: Narrative medicine and Jorge Luis Borges' "The other death"
 AESTHETIC MODES OF THE INFINITE: HORROR, SUBLIMITY, AND RELATIONALITY
@@ -98,3 +122,4 @@ Fiction in Pain: Mourning and Melancholia in Borges's Emma Zunz and El Aleph; [F
 Reflexivity’s Ontological Turn: From Cybernetics to Autopoiesis in “The Circular Ruins” and The People of Paper
 Jorge Luis Borges’s Theory and Practice of Translation
 Incompatibilism and the garden of forking paths
+```
