@@ -4,7 +4,8 @@ I have been working, with some variations, on LAMP stacks for a number of years.
 
 Over the years, I have come to appreciate MySQL, but I prefer Postgres (better use of schemas and no `tick` marks around everything. 
 
+I wrote a few of my own queries to test connectivity with MySQL.
 
 
-### Tldr Installation/Removal
+### LAMP Stack MySQL Queries via PHP
 <img src="https://github.com/brontd/lib690/blob/main/lib690_mysql.png" width="100%" alt="Lamp Stack MySQl">
