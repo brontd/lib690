@@ -15,6 +15,8 @@ Stack:
 Basically, the Html form is manaaged by opac.js. Search data is added via Html, processed by JS to create a json response (a promise) to the Php (which, of course, 
 queries the database and then returns an array of arrays... but in this case usually just a single array.
 
+I like the separation of concerns into discrete layers. Php is a wonderful scripting language, but it can be difficult to read php/html mixtures. This methodology makes for clear distinctions in functionality... 
+
 ### JS
 ```
 $widget_info_data = get_json_response(info_http).then((data) => {
