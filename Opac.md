@@ -4,6 +4,8 @@ This was an interesting assignment. Forgive me that I didn't follow the directio
 
 I wanted to experiment a bit with creating a RESTful endpoint to access the data.
 
+http://34.16.190.238/index.html
+
 Stack:
   - MySQL Database as data layer
   - PHP as middleware
